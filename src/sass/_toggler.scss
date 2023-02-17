@@ -1,0 +1,77 @@
+.toggler {
+  color: #6b7381;
+  background: #bdc1c8;
+  margin: 0 0.5rem;
+  padding: 0;
+  position: relative;
+  border: none;
+  height: 1.5rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  margin-left: 20px;
+  cursor: pointer;
+
+  &:before {
+    content: 'Off';
+    line-height: 1.5rem;
+    font-weight: 600;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    transition: opacity 0.25s;
+    color: #fff;
+    letter-spacing: 0.75px;
+    left: 0.4125rem;
+    width: 2.325rem;
+    text-align: right;
+  }
+
+  &:after {
+    content: 'On';
+    right: -0.5rem;
+    text-align: left;
+    opacity: 0;
+    color: #fff;
+    letter-spacing: 0.75px;
+    left: 0.4125rem;
+    width: 2.325rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    transition: opacity 0.25s;
+  }
+}
+
+.handle {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 1.125rem;
+  background: #fff;
+  transition: left 0.25s;
+}
+
+.toggler {
+  &.active {
+    background-color: #ff8300;
+
+    .handle {
+      left: 1.6875rem;
+      transition: left 0.25s;
+    }
+
+    &:before {
+      opacity: 0;
+    }
+
+    &:after {
+      opacity: 1;
+    }
+  }
+}
