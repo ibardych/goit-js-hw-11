@@ -28,7 +28,10 @@ const lightBox = new SimpleLightbox('.gallery a', {
 
 const pagination = new Pagination(IMAGES_PER_PAGE);
 
-const throttledLoadNextPage = _.throttle(loadNextPage, 300);
+const throttledLoadNextPage = _.throttle(
+  () => pagination.loadNextPage(requestImages),
+  300
+);
 
 refs.searchFormEl.addEventListener('submit', searchForImages);
 
@@ -45,7 +48,7 @@ refs.autoLoadToggler.addEventListener('click', () => {
   }
 
   refs.loadMoreButton.classList.remove('visible');
-  loadNextPage();
+  pagination.loadNextPage(requestImages);
 });
 
 refs.loadMoreButton.addEventListener('click', () => {
@@ -120,19 +123,6 @@ function showImages(images) {
   lightBox.refresh();
 
   pagination.pageNumber += 1;
-}
-
-function loadNextPage() {
-  const { autoLoadImages, pageNumber, fetchingImages } = pagination;
-  if (
-    document.documentElement.scrollTop + window.innerHeight >
-      refs.gallery.offsetHeight - 200 &&
-    !fetchingImages &&
-    autoLoadImages &&
-    pageNumber > 1
-  ) {
-    requestImages();
-  }
 }
 
 function addSmoothScroll() {
