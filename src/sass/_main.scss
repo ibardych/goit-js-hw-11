@@ -78,7 +78,6 @@ p {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 50px;
 
   @media screen and (max-width: 1500px) {
     padding: 0 20px;
@@ -166,7 +165,10 @@ p {
 }
 
 .load-more {
-  display: none;
+  display: block;
+  opacity: 1;
+  visibility: hidden;
+  pointer-events: none;
   margin-bottom: 300px;
   margin-left: auto;
   margin-right: auto;
@@ -180,7 +182,8 @@ p {
   transition: opacity 250ms ease-in-out;
 
   &.visible {
-    display: block;
+    visibility: visible;
+    pointer-events: all;
   }
 
   &:hover,
